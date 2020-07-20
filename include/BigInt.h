@@ -9,7 +9,7 @@ class BigInt{
 private:
     std::vector<unsigned> value;
     bool positive;
-    const uint64_t U_1_MAX = 4294967296;
+    const uint64_t BASE = 4294967296;
 public:
     // constructors
     BigInt();

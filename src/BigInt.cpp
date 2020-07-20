@@ -28,8 +28,8 @@ void BigInt::set_value(int64_t num){
     }
     value = {};
     while(num > 0){
-        value.push_back(num % U_1_MAX);
-        num /= U_1_MAX;
+        value.push_back(num % BASE);
+        num /= BASE;
     }
 }
 

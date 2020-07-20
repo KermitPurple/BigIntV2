@@ -11,10 +11,13 @@ private:
     bool positive;
     const uint64_t BASE = 4294967296;
     std::vector<unsigned> align(uint64_t zeros);
+    BigInt add(BigInt other);
 public:
     // constructors
     BigInt();
     BigInt(int64_t num);
+    BigInt(std::vector<unsigned> vec);
+    BigInt(std::vector<unsigned> vec, bool pos);
     // getters and setters
     std::vector<unsigned> get_value();
     bool get_positive();

@@ -10,6 +10,15 @@ std::vector<unsigned> BigInt::align(uint64_t zeros){
     return vec;
 }
 
+BigInt BigInt::add(BigInt other){
+    std::vector<unsigned> aligned = other.align(size() - other.size());
+    std::vector<unsigned> result;
+    int64_t carry = 0;
+    for(int i = 0; i < size(); i++){
+    }
+    return BigInt(result);
+}
+
 // public
 
 BigInt::BigInt(){
@@ -19,6 +28,12 @@ BigInt::BigInt(){
 
 BigInt::BigInt(int64_t num){
     set_value(num);
+    positive = true;
+}
+
+BigInt::BigInt(std::vector<unsigned> vec){
+    value = vec;
+    positive = pos;
 }
 
 BigInt::BigInt(std::vector<unsigned> vec, bool pos){

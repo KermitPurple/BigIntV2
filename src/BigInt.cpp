@@ -28,9 +28,9 @@ void BigInt::set_value(int64_t num){
         num = -num;
     }
     value = {};
-    value.push_back(num % UINT_MAX);
-    for(int i = 0; i < num / UINT_MAX; i ++){
-        value.push_back(UINT_MAX);
+    while(num > 0){
+        value.push_back(num % UINT_MAX);
+        num /= UINT_MAX;
     }
 }
 

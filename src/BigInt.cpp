@@ -2,6 +2,13 @@
 
 // private
 
+std::vector<unsigned> BigInt::align(uint64_t zeros){
+    std::vector vec = value;
+    for(int i = 0; i < zeros; i++){
+        vec.push_back(0);
+    }
+    return vec;
+}
 
 // public
 

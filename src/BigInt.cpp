@@ -15,6 +15,11 @@ BigInt BigInt::add(BigInt other){
     std::vector<unsigned> result;
     int64_t carry = 0;
     for(int i = 0; i < size(); i++){
+        uint64_t a = value[i];
+        uint64_t b = aligned[i];
+        uint64_t x = a + b + carry;
+        carry = x / BASE;
+        result.push_back(x % BASE);
     }
     return BigInt(result);
 }
@@ -33,7 +38,7 @@ BigInt::BigInt(int64_t num){
 
 BigInt::BigInt(std::vector<unsigned> vec){
     value = vec;
-    positive = pos;
+    positive = true;
 }
 
 BigInt::BigInt(std::vector<unsigned> vec, bool pos){

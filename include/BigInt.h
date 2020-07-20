@@ -23,6 +23,8 @@ public:
     bool get_positive();
     void set_value(int64_t num);
     void set_positive(bool b);
+    // operators
+    BigInt operator-();
     // other
     uint64_t size();
 };

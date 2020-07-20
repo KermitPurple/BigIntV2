@@ -74,6 +74,10 @@ void BigInt::set_positive(bool b){
     positive = b;
 }
 
+BigInt BigInt::operator-(){
+    return BigInt(value, !positive);
+}
+
 uint64_t BigInt::size(){
     return value.size();
 }

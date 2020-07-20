@@ -2,14 +2,6 @@
 
 // private
 
-std::vector<unsigned> BigInt::align(uint64_t zeros){
-    std::vector vec = value;
-    for(int i = 0; i < zeros; i++){
-        vec.push_back(0);
-    }
-    return vec;
-}
-
 // public
 
 BigInt::BigInt(){
@@ -47,4 +39,12 @@ void BigInt::set_positive(bool b){
 
 uint64_t BigInt::size(){
     return value.size();
+}
+
+std::vector<unsigned> BigInt::align(uint64_t zeros){
+    std::vector<unsigned> vec = value;
+    for(int i = 0; i < zeros; i++){
+        vec.push_back(0);
+    }
+    return vec;
 }

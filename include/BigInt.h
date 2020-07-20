@@ -9,7 +9,6 @@ class BigInt{
 private:
     std::vector<unsigned> value;
     bool positive;
-    std::vector<unsigned> align(uint64_t zeros);
 public:
     // constructors
     BigInt();
@@ -20,6 +19,7 @@ public:
     void set_positive(bool b);
     // other
     uint64_t size();
+    std::vector<unsigned> align(uint64_t zeros);
 };
 
 #endif // BIG_INT_H

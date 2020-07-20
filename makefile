@@ -1,4 +1,4 @@
-all: main.o 
+all: main.o BigInt.o
 	g++ bin/*.o -o bin/test.exe -I include
 	@echo
 

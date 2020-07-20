@@ -21,6 +21,11 @@ BigInt::BigInt(int64_t num){
     set_value(num);
 }
 
+BigInt::BigInt(std::vector<unsigned> vec, bool pos){
+    value = vec;
+    positive = pos;
+}
+
 std::vector<unsigned> BigInt::get_value(){
     return value;
 }

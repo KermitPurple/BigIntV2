@@ -14,6 +14,7 @@ private:
 public:
     // constructors
     BigInt();
+    BigInt(int64_t num);
     // getters and setters
     std::vector<unsigned> get_value();
     bool get_positive();

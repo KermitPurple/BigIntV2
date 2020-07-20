@@ -2,8 +2,7 @@
 #include"BigInt.h"
 
 int main(){
-    BigInt a;
-    a.set_value(9999999999999);
+    BigInt a(99999999999999999);
     for(auto item: a.get_value()){
         std::cout << item << " ";
     }

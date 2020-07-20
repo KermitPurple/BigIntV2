@@ -17,6 +17,10 @@ BigInt::BigInt(){
     positive = true;
 }
 
+BigInt::BigInt(int64_t num){
+    set_value(num);
+}
+
 std::vector<unsigned> BigInt::get_value(){
     return value;
 }

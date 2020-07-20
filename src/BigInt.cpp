@@ -37,3 +37,7 @@ void BigInt::set_value(int64_t num){
 void BigInt::set_positive(bool b){
     positive = b;
 }
+
+uint64_t BigInt::size(){
+    return value.size();
+}

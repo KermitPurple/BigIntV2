@@ -24,6 +24,25 @@ BigInt BigInt::add(BigInt other){
     return BigInt(result);
 }
 
+BigInt BigInt::subtract(BigInt other){
+    std::vector<unsigned> aligned = other.align(size() - other.size());
+    std::vector<unsigned> result;
+    int64_t carry = 0;
+    for(int i = 0; i < size(); i++){
+        uint64_t a = value[i];
+        uint64_t b = aligned[i];
+        uint64_t x = a - b - carry;
+        if(x < 0){
+            x += BASE;
+            carry = 1;
+        } else {
+            carry = 0;
+        }
+        result.push_back(x);
+    }
+    return BigInt(result);
+}
+
 // public
 
 BigInt::BigInt(){

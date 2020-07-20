@@ -7,5 +7,11 @@ int main(){
         std::cout << item << " ";
     }
     std::cout << std::endl;
+
+    // for(auto item: a.add(BigInt(100)).get_value()){
+    //     std::cout << item << " ";
+    // }
+    // std::cout << std::endl;
+
 	return 0;
 }

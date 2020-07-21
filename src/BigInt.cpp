@@ -93,6 +93,29 @@ void BigInt::set_positive(bool b){
     positive = b;
 }
 
+bool BigInt::operator<(BigInt other){
+    if(positive && !other.get_positive())
+        return false;
+    else if(!positive && other.get_positive())
+        return true;
+    uint64_t sz = size();
+    uint64_t other_sz = other.size();
+    if(sz != other_sz){
+        if(positive) return sz < other_sz;
+        else return sz > other_sz;
+    }
+    std::vector<unsigned> other_value = other.get_value();
+    for(int i = sz - 1; i >= 0; i--){
+        if(value[i] != other_value[i]){
+            if(positive)
+                return value[i] < other_value[i];
+            else
+                return value[i] > other_value[i];
+        }
+    }
+    return false;
+}
+
 BigInt BigInt::operator-(){
     return BigInt(value, !positive);
 }

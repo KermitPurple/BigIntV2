@@ -167,3 +167,11 @@ BigInt BigInt::abs(){
 uint64_t BigInt::size(){
     return value.size();
 }
+
+void BigInt::print_parts(){
+    std::cout << (positive ? "positive " : "negative ");
+    for(auto i: value){
+        std::cout << i << " ";
+    }
+    std::cout << std::endl;
+}

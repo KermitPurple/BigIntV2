@@ -36,6 +36,7 @@ public:
     // other
     uint64_t size();
     BigInt abs();
+    void print_parts();
 };
 
 #endif // BIG_INT_H

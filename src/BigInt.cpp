@@ -63,10 +63,11 @@ BigInt BigInt::multiply(BigInt other){
 }
 
 BigInt BigInt::divide(BigInt other){
+    // TODO: use better algorithm
     BigInt result = 0;
     BigInt remain = abs();
     while(remain >= other.abs()){
-        result += 1;
+        result++;
         remain -= other.abs();
     }
     return result;

@@ -64,10 +64,10 @@ BigInt BigInt::multiply(BigInt other){
 
 BigInt BigInt::divide(BigInt other){
     BigInt result = 0;
-    BigInt remain = *this;
-    while(remain >= other){
+    BigInt remain = abs();
+    while(remain >= other.abs()){
         result += 1;
-        remain -= other;
+        remain -= other.abs();
     }
     return result;
 }
@@ -222,6 +222,20 @@ BigInt BigInt::operator*(BigInt other){
     }
 }
 
+BigInt BigInt::operator/(BigInt other){
+    if(positive){
+        if(other.get_positive()) // a * b
+            return divide(other); // a * b
+        else // a * -( b )
+            return -divide(other);
+    }else{
+        if(other.get_positive()) // -( a ) * b
+            return -divide(other);
+        else // -( a ) * -( b ) == a * b
+            return divide(other);
+    }
+}
+
 BigInt* BigInt::operator+=(BigInt other){
     *this = *this + other;
     return this;
@@ -234,6 +248,11 @@ BigInt* BigInt::operator-=(BigInt other){
 
 BigInt* BigInt::operator*=(BigInt other){
     *this = *this * other;
+    return this;
+}
+
+BigInt* BigInt::operator/=(BigInt other){
+    *this = *this / other;
     return this;
 }
 

@@ -41,6 +41,12 @@ int main(){
     a *= 999999999999;
     a *= 999999999999;
     a.print_parts();
-    // BigInt(999999).divide(10).print_parts();
+    (BigInt(99999)/-9).print_parts();
+    a = 99;
+    a.print_parts();
+    a /= -3;
+    a.print_parts();
+    a /= -3;
+    a.print_parts();
 	return 0;
 }

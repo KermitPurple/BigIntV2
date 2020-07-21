@@ -22,12 +22,13 @@ int main(){
     b = a >= BigInt(static_cast<uint64_t>(UINT_MAX) + 2);
     std::cout << (b ? "True" : "False") << std::endl;
 
-    a = BigInt(9999999999);
+    a = 9999999999;
     a.print_parts();
     (a + a).print_parts();
     (a - a).print_parts();
     (a - a - a + BigInt(999999)).print_parts();
     BigInt(-9999999999).print_parts();
     BigInt(BigInt(999999999999).get_value()).print_parts();
+    // BigInt(99).multiply(999999).print_parts();
 	return 0;
 }

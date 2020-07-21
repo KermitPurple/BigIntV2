@@ -43,6 +43,25 @@ BigInt BigInt::subtract(BigInt other){
     return BigInt(result);
 }
 
+BigInt BigInt::multiply(BigInt other){
+    uint64_t sz = size();
+    uint64_t other_sz = other.size();
+    std::vector<unsigned> other_value = other.get_value();
+    std::vector<unsigned> result;
+    for(int i = 0; i < sz; i++){
+        int64_t carry = 0;
+        for(int j = 0; j < other_sz; j++){
+            uint64_t a = value[i];
+            uint64_t b = other_value[j];
+            uint64_t x = a * b + carry;
+            carry = x / BASE;
+            result.push_back(x % BASE);
+        }
+        result.push_back(carry);
+    }
+    return BigInt(result);
+}
+
 void BigInt::clean_leading_zeros(){
     for(uint64_t i = size() - 1; i >= 1; i--){
         if(value[i] == 0)

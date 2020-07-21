@@ -146,7 +146,7 @@ BigInt BigInt::operator+(BigInt other){
             if(abs() > other.abs()) return add(other); // a + b
             else return other.add(*this); // b + a
         } else { // a + ( - b ) == a - b
-            if(abs() > other.abs()) return subtract(other); // a - b
+            if(abs() >= other.abs()) return subtract(other); // a - b
             else return -other.subtract(*this); // a - b == -( b - a )
         }
     } else {
@@ -158,6 +158,10 @@ BigInt BigInt::operator+(BigInt other){
             else return -other.add(*this); // - ( b + a )
         }
     }
+}
+
+BigInt BigInt::operator-(BigInt other){
+    return *this + (-other);
 }
 
 BigInt BigInt::abs(){

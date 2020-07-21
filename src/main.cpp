@@ -21,7 +21,10 @@ int main(){
     std::cout << (b ? "True" : "False") << std::endl;
     b = a >= BigInt(static_cast<uint64_t>(UINT_MAX) + 2);
     std::cout << (b ? "True" : "False") << std::endl;
+
+    a = BigInt(99999999);
     
     a.print_parts();
+    (a + a).print_parts();
 	return 0;
 }

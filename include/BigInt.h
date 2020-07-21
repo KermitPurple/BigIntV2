@@ -9,7 +9,7 @@ class BigInt{
 private:
     std::vector<unsigned> value;
     bool positive;
-    const uint64_t BASE = 4294967296;
+    static const uint64_t BASE = 4294967296;
     std::vector<unsigned> align(uint64_t zeros);
     BigInt add(BigInt other);
     BigInt subtract(BigInt other);

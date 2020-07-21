@@ -256,6 +256,16 @@ BigInt* BigInt::operator/=(BigInt other){
     return this;
 }
 
+BigInt* BigInt::operator++(int i){
+    *this += 1;
+    return this;
+}
+
+BigInt* BigInt::operator--(int i){
+    *this -= 1;
+    return this;
+}
+
 BigInt BigInt::abs(){
     return BigInt(value, true);
 }

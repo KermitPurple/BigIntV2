@@ -204,6 +204,21 @@ BigInt BigInt::operator*(BigInt other){
     }
 }
 
+BigInt* BigInt::operator+=(BigInt other){
+    *this = *this + other;
+    return this;
+}
+
+BigInt* BigInt::operator-=(BigInt other){
+    *this = *this - other;
+    return this;
+}
+
+BigInt* BigInt::operator*=(BigInt other){
+    *this = *this * other;
+    return this;
+}
+
 BigInt BigInt::abs(){
     return BigInt(value, true);
 }

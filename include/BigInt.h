@@ -37,6 +37,9 @@ public:
     BigInt operator+(BigInt other);
     BigInt operator-(BigInt other);
     BigInt operator*(BigInt other);
+    BigInt* operator+=(BigInt other);
+    BigInt* operator-=(BigInt other);
+    BigInt* operator*=(BigInt other);
     // other
     uint64_t size();
     BigInt abs();

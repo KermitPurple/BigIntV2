@@ -52,7 +52,6 @@ BigInt::BigInt(){
 
 BigInt::BigInt(int64_t num){
     set_value(num);
-    positive = true;
 }
 
 BigInt::BigInt(std::vector<unsigned> vec){
@@ -74,9 +73,9 @@ bool BigInt::get_positive(){
 }
 
 void BigInt::set_value(int64_t num){
+    positive = true;
     if(num == 0){
         value = {0};
-        positive = true;
         return;
     } else if(num < 0){
         positive = false;

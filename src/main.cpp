@@ -28,5 +28,6 @@ int main(){
     (a - a).print_parts();
     (a - a - a + BigInt(999999)).print_parts();
     BigInt(-9999999999).print_parts();
+    BigInt(BigInt(999999999999).get_value()).print_parts();
 	return 0;
 }

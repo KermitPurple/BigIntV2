@@ -13,6 +13,7 @@ private:
     std::vector<unsigned> align(uint64_t zeros);
     BigInt add(BigInt other);
     BigInt subtract(BigInt other);
+    void clean_leading_zeros();
 public:
     // constructors
     BigInt();

@@ -43,6 +43,15 @@ BigInt BigInt::subtract(BigInt other){
     return BigInt(result);
 }
 
+void BigInt::clean_leading_zeros(){
+    for(uint64_t i = size() - 1; i >= 1; i--){
+        if(value[i] == 0)
+            value.pop_back();
+        else
+            break;
+    }
+}
+
 // public
 
 BigInt::BigInt(){
@@ -54,14 +63,13 @@ BigInt::BigInt(int64_t num){
     set_value(num);
 }
 
-BigInt::BigInt(std::vector<unsigned> vec){
-    value = vec;
-    positive = true;
+BigInt::BigInt(std::vector<unsigned> vec):BigInt(vec, true){
 }
 
 BigInt::BigInt(std::vector<unsigned> vec, bool pos){
     value = vec;
     positive = pos;
+    clean_leading_zeros();
 }
 
 std::vector<unsigned> BigInt::get_value(){

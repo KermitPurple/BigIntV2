@@ -34,6 +34,7 @@ public:
     BigInt operator-();
     // other
     uint64_t size();
+    BigInt abs();
 };
 
 #endif // BIG_INT_H

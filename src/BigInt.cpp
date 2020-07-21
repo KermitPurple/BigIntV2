@@ -140,6 +140,10 @@ BigInt BigInt::operator-(){
     return BigInt(value, !positive);
 }
 
+BigInt BigInt::abs(){
+    return BigInt(value, true);
+}
+
 uint64_t BigInt::size(){
     return value.size();
 }

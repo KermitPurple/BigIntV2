@@ -62,6 +62,16 @@ BigInt BigInt::multiply(BigInt other){
     return BigInt(result);
 }
 
+BigInt BigInt::divide(BigInt other){
+    BigInt result = 0;
+    BigInt remain = *this;
+    while(remain >= other){
+        result += 1;
+        remain -= other;
+    }
+    return result;
+}
+
 void BigInt::clean_leading_zeros(){
     for(uint64_t i = size() - 1; i >= 1; i--){
         if(value[i] == 0)

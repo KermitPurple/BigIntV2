@@ -14,6 +14,7 @@ private:
     BigInt add(BigInt other);
     BigInt subtract(BigInt other);
     BigInt multiply(BigInt other);
+    BigInt divide(BigInt other);
     void clean_leading_zeros();
 public:
     // constructors

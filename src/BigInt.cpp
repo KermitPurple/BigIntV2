@@ -192,21 +192,15 @@ BigInt BigInt::operator-(BigInt other){
 
 BigInt BigInt::operator*(BigInt other){
     if(positive){
-        if(other.get_positive()){ // a * b
-            if(size() > other.size()) return multiply(other); // a * b
-            else return other.multiply(*this); // b * a
-        }else{ // a * -( b )
-            if(size() > other.size()) return -multiply(other);
-            else return -other.multiply(*this);
-        }
+        if(other.get_positive()) // a * b
+            return multiply(other); // a * b
+        else // a * -( b )
+            return -multiply(other);
     }else{
-        if(other.get_positive()){ // -( a ) * b
-            if(size() > other.size()) return -multiply(other);
-            else return -other.multiply(*this);
-        }else{ // -( a ) * -( b ) == a * b
-            if(size() > other.size()) return multiply(other);
-            else return other.multiply(*this);
-        }
+        if(other.get_positive()) // -( a ) * b
+            return -multiply(other);
+        else // -( a ) * -( b ) == a * b
+            return multiply(other);
     }
 }
 

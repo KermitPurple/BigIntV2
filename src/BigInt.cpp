@@ -190,6 +190,26 @@ BigInt BigInt::operator-(BigInt other){
     return *this + (-other);
 }
 
+BigInt BigInt::operator*(BigInt other){
+    if(positive){
+        if(other.get_positive()){ // a * b
+            if(size() > other.size()) return multiply(other); // a * b
+            else return other.multiply(*this); // b * a
+        }else{ // a * -( b )
+            if(size() > other.size()) return -multiply(other);
+            else return -other.multiply(*this);
+        }
+    }else{
+        if(other.get_positive()){ // -( a ) * b
+            if(size() > other.size()) return -multiply(other);
+            else return -other.multiply(*this);
+        }else{ // -( a ) * -( b ) == a * b
+            if(size() > other.size()) return multiply(other);
+            else return other.multiply(*this);
+        }
+    }
+}
+
 BigInt BigInt::abs(){
     return BigInt(value, true);
 }

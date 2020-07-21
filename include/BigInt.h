@@ -28,6 +28,9 @@ public:
     bool operator==(BigInt other);
     bool operator!=(BigInt other);
     bool operator<(BigInt other);
+    bool operator>(BigInt other);
+    bool operator<=(BigInt other);
+    bool operator>=(BigInt other);
     BigInt operator-();
     // other
     uint64_t size();

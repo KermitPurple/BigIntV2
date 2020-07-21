@@ -124,6 +124,18 @@ bool BigInt::operator<(BigInt other){
     return false;
 }
 
+bool BigInt::operator>(BigInt other){
+    return !(*this <= other);
+}
+
+bool BigInt::operator<=(BigInt other){
+    return *this == other || *this < other;
+}
+
+bool BigInt::operator>=(BigInt other){
+    return !(*this < other);
+}
+
 BigInt BigInt::operator-(){
     return BigInt(value, !positive);
 }

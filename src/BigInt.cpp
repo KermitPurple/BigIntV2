@@ -93,6 +93,14 @@ void BigInt::set_positive(bool b){
     positive = b;
 }
 
+bool BigInt::operator==(BigInt other){
+    return positive == other.get_positive() && value == other.get_value();
+}
+
+bool BigInt::operator!=(BigInt other){
+    return !(*this == other);
+}
+
 bool BigInt::operator<(BigInt other){
     if(positive && !other.get_positive())
         return false;

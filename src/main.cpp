@@ -7,7 +7,11 @@ int main(){
         std::cout << item << " ";
     }
     std::cout << std::endl;
-    bool b = a < BigInt(static_cast<uint64_t>(UINT_MAX) + 2);
+    bool b = a < BigInt(static_cast<uint64_t>(UINT_MAX) + 1);
+    std::cout << (b ? "True" : "False") << std::endl;
+    b = a == BigInt(static_cast<uint64_t>(UINT_MAX) + 1);
+    std::cout << (b ? "True" : "False") << std::endl;
+    b = a != BigInt(static_cast<uint64_t>(UINT_MAX) + 1);
     std::cout << (b ? "True" : "False") << std::endl;
 
     // for(auto item: a.subtract(BigInt(999)).get_value()){

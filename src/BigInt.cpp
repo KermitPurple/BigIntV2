@@ -140,6 +140,26 @@ BigInt BigInt::operator-(){
     return BigInt(value, !positive);
 }
 
+BigInt BigInt::operator+(BigInt other){
+    if(positive){
+        if(other.get_positive()){ // a + b
+            if(abs() > other.abs()) return add(other); // a + b
+            else return other.add(*this); // b + a
+        } else { // a + ( - b ) == a - b
+            if(abs() > other.abs()) return subtract(other); // a - b
+            else return -other.subtract(*this); // a - b == -( b - a )
+        }
+    } else {
+        if(other.get_positive()){ // ( - a ) + b == b - a
+            if(abs() > other.abs()) return -subtract(other); // b - a == -( a - b )
+            else return other.subtract(*this);// b - a
+        } else { // ( - a) + ( - b) == - ( a + b )
+            if(abs() > other.abs()) return -add(other); // - ( a + b )
+            else return -other.add(*this); // - ( b + a )
+        }
+    }
+}
+
 BigInt BigInt::abs(){
     return BigInt(value, true);
 }

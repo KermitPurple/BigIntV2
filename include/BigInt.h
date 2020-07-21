@@ -32,6 +32,7 @@ public:
     bool operator<=(BigInt other);
     bool operator>=(BigInt other);
     BigInt operator-();
+    BigInt operator+(BigInt other);
     // other
     uint64_t size();
     BigInt abs();

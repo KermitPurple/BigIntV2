@@ -74,7 +74,7 @@ std::pair<BigInt, BigInt> BigInt::quotient_and_remainder(BigInt denominator){
         remain |= (numerator >> i) & 1;
         if(remain >= denominator){
             remain -= denominator;
-            quotient |= (1 << i);
+            quotient |= (BigInt(1) << i);
         }
     }
     return std::make_pair(quotient, remain);

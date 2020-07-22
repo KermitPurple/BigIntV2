@@ -396,14 +396,13 @@ void BigInt::print_parts(){
 }
 
 std::string BigInt::to_string(){
-    BigInt num = *this;
-    std::string result = positive ? "" : "-";
+    BigInt num = abs();
+    std::string result;
     while(num > 0){
-        num.print_parts();
         auto qr_pair = num.quotient_and_remainder(10);
         result = std::to_string(qr_pair.second.get_value()[0]) + result;
         num = qr_pair.first;
     }
 
-    return result;
+    return (positive ? "" : "-") + result;
 }

@@ -249,6 +249,16 @@ BigInt BigInt::operator<<(uint64_t num){
     return BigInt(val, positive);
 }
 
+BigInt BigInt::operator>>(uint64_t num){
+    std::vector<unsigned> val = value;
+    int64_t sz = val.size();
+    for(int i = 0; i < sz - 1; i++){
+        val[i] = (val[i] >> num) | (val[i + 1] << 32 - num);
+    }
+    val[sz - 1] >>= num;
+    return BigInt(val, positive);
+}
+
 BigInt* BigInt::operator+=(BigInt other){
     *this = *this + other;
     return this;

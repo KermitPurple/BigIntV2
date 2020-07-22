@@ -45,6 +45,8 @@ public:
     BigInt* operator-=(BigInt other);
     BigInt* operator*=(BigInt other);
     BigInt* operator/=(BigInt other);
+    BigInt* operator<<=(int64_t num);
+    BigInt* operator>>=(int64_t num);
     BigInt* operator++(int i);
     BigInt* operator--(int i);
     // other

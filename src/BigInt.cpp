@@ -287,6 +287,16 @@ BigInt* BigInt::operator/=(BigInt other){
     return this;
 }
 
+BigInt* BigInt::operator<<=(int64_t num){
+    *this = *this << num;
+    return this;
+}
+
+BigInt* BigInt::operator>>=(int64_t num){
+    *this = *this >> num;
+    return this;
+}
+
 BigInt* BigInt::operator++(int i){
     *this += 1;
     return this;

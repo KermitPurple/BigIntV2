@@ -70,5 +70,18 @@ int main(){
     (a >> 5).print_parts();
     (a << 5).print_parts();
     (a >> -5).print_parts();
+    a.print_parts();
+    (a << 0).print_parts();
+    (a >> 0).print_parts();
+    a >>= 16;
+    a.print_parts();
+    a <<= 16;
+    a.print_parts();
+    a <<= 31;
+    a.print_parts();
+    a <<= 31;
+    a.print_parts();
+    a <<= 31;
+    a.print_parts();
 	return 0;
 }

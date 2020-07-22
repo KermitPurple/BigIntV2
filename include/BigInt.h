@@ -3,6 +3,7 @@
 
 #include<iostream>
 #include<limits.h>
+#include<math.h>
 #include<vector>
 
 class BigInt{
@@ -14,7 +15,9 @@ private:
     BigInt add(BigInt other);
     BigInt subtract(BigInt other);
     BigInt multiply(BigInt other);
-    BigInt divide(BigInt other);
+    BigInt divide(BigInt denominator);
+    BigInt left_shift_small(int64_t num, std::vector<unsigned> val);
+    BigInt right_shift_small(int64_t num, std::vector<unsigned> val);
     void clean_leading_zeros();
 public:
     // constructors

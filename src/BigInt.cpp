@@ -63,15 +63,39 @@ BigInt BigInt::multiply(BigInt other){
     return BigInt(result);
 }
 
-BigInt BigInt::divide(BigInt other){
-    // TODO: use better algorithm
-    BigInt result = 0;
-    BigInt remain = abs();
-    while(remain >= other.abs()){
-        result++;
-        remain -= other.abs();
+BigInt BigInt::divide(BigInt denominator){
+    BigInt quotient;
+    // BigInt remain;
+    // BigInt nominator = *this;
+    // uint64_t bits = size() * 32;
+    // for(int i = bits - 1; i >= 0; i--){
+    //     remain <<= 1;
+    //     remain += nominator / std::pow(2, i);
+    //     if(remain >= denominator){
+    //         remain -= denominator;
+    //         quotient |= 1 << i;
+    //     }
+    // }
+    return quotient;
+}
+
+BigInt BigInt::left_shift_small(int64_t num, std::vector<unsigned> val){
+    val.push_back(0);
+    int64_t sz = val.size();
+    for(int i = sz - 1; i >= 1; i--){
+        val[i] = (val[i] << num) | (val[i - 1] >> 32 - num);
     }
-    return result;
+    val[0] <<= num;
+    return BigInt(val, positive);
+}
+
+BigInt BigInt::right_shift_small(int64_t num, std::vector<unsigned> val){
+    int64_t sz = val.size();
+    for(int i = 0; i < sz - 1; i++){
+        val[i] = (val[i] >> num) | (val[i + 1] << 32 - num);
+    }
+    val[sz - 1] >>= num;
+    return BigInt(val, positive);
 }
 
 void BigInt::clean_leading_zeros(){
@@ -239,32 +263,29 @@ BigInt BigInt::operator/(BigInt other){
 }
 
 BigInt BigInt::operator<<(int64_t num){
+    std::vector<unsigned> val = value;
     if(num == 0)
         return *this;
     else if(num < 0)
         return *this >> -num;
-    std::vector<unsigned> val = value;
-    val.push_back(0);
-    int64_t sz = val.size();
-    for(int i = sz - 1; i >= 1; i--){
-        val[i] = (val[i] << num) | (val[i - 1] >> 32 - num);
+    uint64_t shift_high = num / 32;
+    uint64_t shift_low = num % 32;
+    for(int i = 0; i < shift_high; i++){
+        // val.insert(0, 0);
     }
-    val[0] <<= num;
-    return BigInt(val, positive);
+    return left_shift_small(shift_low, val);
 }
 
 BigInt BigInt::operator>>(int64_t num){
+    std::vector<unsigned> val = value;
     if(num == 0)
         return *this;
     else if(num < 0)
         return *this << -num;
-    std::vector<unsigned> val = value;
-    int64_t sz = val.size();
-    for(int i = 0; i < sz - 1; i++){
-        val[i] = (val[i] >> num) | (val[i + 1] << 32 - num);
-    }
-    val[sz - 1] >>= num;
-    return BigInt(val, positive);
+    uint64_t shift_high = num / 32;
+    uint64_t shift_low = num % 32;
+    val.erase(val.begin(), val.begin() + shift_high);
+    return right_shift_small(shift_low, val);
 }
 
 BigInt* BigInt::operator+=(BigInt other){

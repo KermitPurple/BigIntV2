@@ -84,9 +84,14 @@ int main(){
     a <<= 31;
     a.print_parts();
     a = 1;
-    a <<= 99999;
+    a <<= 99;
     a.print_parts();
-    a >>= 99999;
+    a *= a;
+    a.print_parts();
+    a = static_cast<uint64_t>(UINT_MAX);
+    a += static_cast<uint64_t>(UINT_MAX);
+    a.print_parts();
+    a |= static_cast<uint64_t>(UINT_MAX);
     a.print_parts();
 	return 0;
 }

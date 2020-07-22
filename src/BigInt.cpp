@@ -73,7 +73,7 @@ BigInt BigInt::divide(BigInt denominator){
     //     remain += nominator / std::pow(2, i);
     //     if(remain >= denominator){
     //         remain -= denominator;
-    //         quotient |= 1 << i;
+    //         quotient |= (1 << i);
     //     }
     // }
     return quotient;
@@ -290,6 +290,17 @@ BigInt BigInt::operator>>(int64_t num){
     return right_shift_small(shift_low, val);
 }
 
+BigInt BigInt::operator|(BigInt other){
+    uint64_t sz = size();
+    uint64_t zeros = sz - other.size();
+    std::vector<unsigned> result;
+    std::vector<unsigned> aligned = other.align(zeros);
+    for(int i = 0; i < sz; i++){
+        result.push_back(value[i] | aligned[i]);
+    }
+    return result;
+}
+
 BigInt* BigInt::operator+=(BigInt other){
     *this = *this + other;
     return this;
@@ -317,6 +328,11 @@ BigInt* BigInt::operator<<=(int64_t num){
 
 BigInt* BigInt::operator>>=(int64_t num){
     *this = *this >> num;
+    return this;
+}
+
+BigInt* BigInt::operator|=(BigInt other){
+    *this = *this | other;
     return this;
 }
 

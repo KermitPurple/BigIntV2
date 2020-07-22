@@ -3,6 +3,7 @@
 
 #include<iostream>
 #include<limits.h>
+#include<utility>
 #include<math.h>
 #include<vector>
 
@@ -15,7 +16,9 @@ private:
     BigInt add(BigInt other);
     BigInt subtract(BigInt other);
     BigInt multiply(BigInt other);
+    std::pair<BigInt, BigInt> quotient_and_remainder(BigInt denominator);
     BigInt divide(BigInt denominator);
+    BigInt modulo(BigInt denominator);
     BigInt left_shift_small(int64_t num, std::vector<unsigned> val);
     BigInt right_shift_small(int64_t num, std::vector<unsigned> val);
     void clean_leading_zeros();

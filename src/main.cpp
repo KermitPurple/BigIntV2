@@ -11,6 +11,6 @@ int main(){
     a.print_parts();
     (BigInt(5) & 2).print_parts();
     a = 99;
-    (a / -3).print_parts();
+    (a / 3).print_parts();
 	return 0;
 }

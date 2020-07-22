@@ -63,7 +63,7 @@ BigInt BigInt::multiply(BigInt other){
     return BigInt(result);
 }
 
-BigInt BigInt::divide(BigInt denominator){
+std::pair<BigInt, BigInt> BigInt::quotient_and_remainder(BigInt denominator){
     BigInt quotient;
     BigInt remain;
     BigInt numerator = abs();
@@ -77,7 +77,15 @@ BigInt BigInt::divide(BigInt denominator){
             quotient |= (1 << i);
         }
     }
-    return quotient;
+    return std::make_pair(quotient, remain);
+}
+
+BigInt BigInt::divide(BigInt denominator){
+    return quotient_and_remainder(denominator).first;
+}
+
+BigInt BigInt::modulo(BigInt denominator){
+    return quotient_and_remainder(denominator).second;
 }
 
 BigInt BigInt::left_shift_small(int64_t num, std::vector<unsigned> val){

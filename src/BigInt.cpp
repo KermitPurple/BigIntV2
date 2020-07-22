@@ -45,22 +45,16 @@ BigInt BigInt::subtract(BigInt other){
 }
 
 BigInt BigInt::multiply(BigInt other){
-    uint64_t sz = size();
-    uint64_t other_sz = other.size();
-    std::vector<unsigned> other_value = other.get_value();
-    std::vector<unsigned> result;
-    int64_t carry = 0;
-    for(int i = 0; i < sz; i++){
-        for(int j = 0; j < other_sz; j++){
-            uint64_t a = value[i];
-            uint64_t b = other_value[j];
-            uint64_t x = a * b + carry;
-            carry = x / BASE;
-            result.push_back(x % BASE);
+    BigInt num = *this;
+    BigInt total;
+    while(num > 0){
+        if(num % 2 != 0){
+            total += other;
         }
+        num >>= 1;
+        other <<= 1;
     }
-    result.push_back(carry);
-    return BigInt(result);
+    return total;
 }
 
 std::pair<BigInt, BigInt> BigInt::quotient_and_remainder(BigInt denominator){

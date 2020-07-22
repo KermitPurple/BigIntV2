@@ -274,6 +274,10 @@ BigInt BigInt::operator/(BigInt other){
     }
 }
 
+BigInt BigInt::operator%(BigInt other){
+    return positive ? modulo(other) : -modulo(other);
+}
+
 BigInt BigInt::operator<<(int64_t num){
     std::vector<unsigned> val = value;
     if(num == 0)
@@ -337,6 +341,11 @@ BigInt* BigInt::operator*=(BigInt other){
 
 BigInt* BigInt::operator/=(BigInt other){
     *this = *this / other;
+    return this;
+}
+
+BigInt* BigInt::operator%=(BigInt other){
+    *this = *this % other;
     return this;
 }
 

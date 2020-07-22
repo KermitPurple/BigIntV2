@@ -12,5 +12,9 @@ int main(){
     (BigInt(5) & 2).print_parts();
     a = 99;
     (a / 3).print_parts();
+    (a / 4).print_parts();
+    (a % 4).print_parts();
+    a = 12;
+    (a % 4).print_parts();
 	return 0;
 }

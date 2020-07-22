@@ -31,7 +31,7 @@ BigInt BigInt::subtract(BigInt other){
     for(int i = 0; i < size(); i++){
         uint64_t a = value[i];
         uint64_t b = aligned[i];
-        uint64_t x = a - b - carry;
+        int64_t x = a - b - carry;
         if(x < 0){
             x += BASE;
             carry = 1;

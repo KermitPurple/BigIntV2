@@ -54,6 +54,15 @@ int main(){
     a.print_parts();
     a = static_cast<uint64_t>(UINT_MAX) * 2;
     a.print_parts();
-    a.multiply(99).print_parts();
+    a += 2;
+    a -= 2;
+    a.print_parts();
+    a -= static_cast<uint64_t>(UINT_MAX);
+    a.print_parts();
+    a += 1;
+    a.print_parts();
+    a = static_cast<uint64_t>(UINT_MAX);
+    a += 1;
+    a.print_parts();
 	return 0;
 }

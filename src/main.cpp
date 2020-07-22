@@ -66,6 +66,9 @@ int main(){
     a.print_parts();
     a *= 2;
     a.print_parts();
-    (a >> 4).print_parts();
+    (a << -5).print_parts();
+    (a >> 5).print_parts();
+    (a << 5).print_parts();
+    (a >> -5).print_parts();
 	return 0;
 }

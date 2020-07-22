@@ -238,7 +238,11 @@ BigInt BigInt::operator/(BigInt other){
     }
 }
 
-BigInt BigInt::operator<<(uint64_t num){
+BigInt BigInt::operator<<(int64_t num){
+    if(num == 0)
+        return *this;
+    else if(num < 0)
+        return *this >> -num;
     std::vector<unsigned> val = value;
     val.push_back(0);
     int64_t sz = val.size();
@@ -249,7 +253,11 @@ BigInt BigInt::operator<<(uint64_t num){
     return BigInt(val, positive);
 }
 
-BigInt BigInt::operator>>(uint64_t num){
+BigInt BigInt::operator>>(int64_t num){
+    if(num == 0)
+        return *this;
+    else if(num < 0)
+        return *this << -num;
     std::vector<unsigned> val = value;
     int64_t sz = val.size();
     for(int i = 0; i < sz - 1; i++){

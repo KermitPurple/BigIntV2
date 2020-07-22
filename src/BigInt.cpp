@@ -21,6 +21,7 @@ BigInt BigInt::add(BigInt other){
         carry = x / BASE;
         result.push_back(x % BASE);
     }
+    result.push_back(carry);
     return BigInt(result);
 }
 

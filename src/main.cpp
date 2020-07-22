@@ -2,19 +2,8 @@
 #include"BigInt.h"
 
 int main(){
-    BigInt a = 64;
-    a <<= 26;
+    BigInt a = 99999999999;
     a.print_parts();
-    a |= 26;
-    a.print_parts();
-    a >>= 26;
-    a.print_parts();
-    (BigInt(5) & 2).print_parts();
-    a = 99;
-    (a / 3).print_parts();
-    (a / 4).print_parts();
-    (a % 4).print_parts();
-    a = 12;
-    (a % 4).print_parts();
+    std::cout << a.to_string() << std::endl;
 	return 0;
 }

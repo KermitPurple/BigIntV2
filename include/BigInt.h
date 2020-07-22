@@ -65,6 +65,7 @@ public:
     uint64_t size();
     BigInt abs();
     void print_parts();
+    std::string to_string();
 };
 
 #endif // BIG_INT_H

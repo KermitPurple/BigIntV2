@@ -416,6 +416,5 @@ std::string BigInt::to_string(){
         result = std::to_string(qr_pair.second.get_value()[0]) + result;
         num = qr_pair.first;
     }
-
     return (positive ? "" : "-") + result;
 }

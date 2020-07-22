@@ -65,17 +65,18 @@ BigInt BigInt::multiply(BigInt other){
 
 BigInt BigInt::divide(BigInt denominator){
     BigInt quotient;
-    // BigInt remain;
-    // BigInt nominator = *this;
-    // uint64_t bits = size() * 32;
-    // for(int i = bits - 1; i >= 0; i--){
-    //     remain <<= 1;
-    //     remain += nominator / std::pow(2, i);
-    //     if(remain >= denominator){
-    //         remain -= denominator;
-    //         quotient |= (1 << i);
-    //     }
-    // }
+    BigInt remain;
+    BigInt numerator = abs();
+    denominator = denominator.abs();
+    uint64_t bits = size() * 32;
+    for(int i = bits - 1; i >= 0; i--){
+        remain <<= 1;
+        remain |= (numerator >> i) & 1;
+        if(remain >= denominator){
+            remain -= denominator;
+            quotient |= (1 << i);
+        }
+    }
     return quotient;
 }
 
@@ -114,8 +115,7 @@ void BigInt::clean_leading_zeros(){
 // public
 
 BigInt::BigInt(){
-    value = {0};
-    positive = true;
+    set_value(0);
 }
 
 BigInt::BigInt(int64_t num){
@@ -297,6 +297,17 @@ BigInt BigInt::operator|(BigInt other){
     std::vector<unsigned> aligned = other.align(zeros);
     for(int i = 0; i < sz; i++){
         result.push_back(value[i] | aligned[i]);
+    }
+    return result;
+}
+
+BigInt BigInt::operator&(BigInt other){
+    uint64_t sz = size();
+    uint64_t zeros = sz - other.size();
+    std::vector<unsigned> result;
+    std::vector<unsigned> aligned = other.align(zeros);
+    for(int i = 0; i < sz; i++){
+        result.push_back(value[i] & aligned[i]);
     }
     return result;
 }

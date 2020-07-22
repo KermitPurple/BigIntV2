@@ -52,7 +52,10 @@ int main(){
     a.print_parts();
     a--;
     a.print_parts();
-    a = 2;
-    (a << 31).print_parts();
+    a = static_cast<uint64_t>(UINT_MAX) + 1;
+    a.print_parts();
+    a *= 1;
+    a.print_parts();
+    (a << 1).print_parts();
 	return 0;
 }

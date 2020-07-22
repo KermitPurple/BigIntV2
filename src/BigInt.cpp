@@ -243,9 +243,7 @@ BigInt BigInt::operator<<(uint64_t num){
     int64_t sz = val.size();
     int64_t carry = 0;
     for(int i = sz - 1; i >= 1; i--){
-        uint64_t x = ((val[i] << num) | (val[i - 1] >> 32 - num)) + carry;
-        val[i] = x % BASE;
-        carry = x / BASE;
+        val[i] = (val[i] << num) | (val[i - 1] >> 32 - num);
     }
     val[0] <<= num;
     return BigInt(val, positive);

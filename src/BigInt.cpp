@@ -242,7 +242,6 @@ BigInt BigInt::operator<<(uint64_t num){
     std::vector<unsigned> val = value;
     val.push_back(0);
     int64_t sz = val.size();
-    int64_t carry = 0;
     for(int i = sz - 1; i >= 1; i--){
         val[i] = (val[i] << num) | (val[i - 1] >> 32 - num);
     }

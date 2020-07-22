@@ -13,10 +13,10 @@ private:
     std::vector<unsigned> align(uint64_t zeros);
     BigInt add(BigInt other);
     BigInt subtract(BigInt other);
-    BigInt multiply(BigInt other);
     BigInt divide(BigInt other);
     void clean_leading_zeros();
 public:
+    BigInt multiply(BigInt other);
     // constructors
     BigInt();
     BigInt(int64_t num);

@@ -52,5 +52,7 @@ int main(){
     a.print_parts();
     a--;
     a.print_parts();
+    a = 2;
+    (a << 31).print_parts();
 	return 0;
 }

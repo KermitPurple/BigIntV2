@@ -83,5 +83,10 @@ int main(){
     a.print_parts();
     a <<= 31;
     a.print_parts();
+    a = 1;
+    a <<= 99999;
+    a.print_parts();
+    a >>= 99999;
+    a.print_parts();
 	return 0;
 }

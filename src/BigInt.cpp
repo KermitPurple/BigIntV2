@@ -80,6 +80,8 @@ BigInt BigInt::divide(BigInt denominator){
 }
 
 BigInt BigInt::left_shift_small(int64_t num, std::vector<unsigned> val){
+    if(num == 0)
+        return BigInt(val, positive);
     val.push_back(0);
     int64_t sz = val.size();
     for(int i = sz - 1; i >= 1; i--){
@@ -90,6 +92,8 @@ BigInt BigInt::left_shift_small(int64_t num, std::vector<unsigned> val){
 }
 
 BigInt BigInt::right_shift_small(int64_t num, std::vector<unsigned> val){
+    if(num == 0)
+        return BigInt(val, positive);
     int64_t sz = val.size();
     for(int i = 0; i < sz - 1; i++){
         val[i] = (val[i] >> num) | (val[i + 1] << 32 - num);
@@ -270,9 +274,7 @@ BigInt BigInt::operator<<(int64_t num){
         return *this >> -num;
     uint64_t shift_high = num / 32;
     uint64_t shift_low = num % 32;
-    for(int i = 0; i < shift_high; i++){
-        // val.insert(0, 0);
-    }
+    val.insert(val.begin(), shift_high, 0);
     return left_shift_small(shift_low, val);
 }
 

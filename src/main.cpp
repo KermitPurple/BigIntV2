@@ -2,11 +2,11 @@
 #include"BigInt.h"
 
 int main(){
-    BigInt a = 99999999999;
+    BigInt a = 88888888888;
     a.print_parts();
-    std::cout << a.to_string() << std::endl;
-    a -= 9999999999999999999999;
+    std::cout << a << std::endl;
+    a >>= 1;
     a.print_parts();
-    std::cout << a.to_string() << std::endl;
+    std::cout << a << std::endl;
 	return 0;
 }

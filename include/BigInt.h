@@ -61,6 +61,7 @@ public:
     BigInt* operator&=(BigInt other);
     BigInt* operator++(int i);
     BigInt* operator--(int i);
+    friend std::ostream& operator<<(std::ostream& out, BigInt& bi);
     // other
     uint64_t size();
     BigInt abs();

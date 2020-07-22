@@ -379,6 +379,11 @@ BigInt* BigInt::operator--(int i){
     return this;
 }
 
+std::ostream& operator<<(std::ostream& out, BigInt& bi){
+    out << bi.to_string();
+    return out;
+}
+
 BigInt BigInt::abs(){
     return BigInt(value, true);
 }

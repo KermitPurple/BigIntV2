@@ -23,6 +23,7 @@ private:
     BigInt right_shift_small(int64_t num, std::vector<unsigned> val);
     BigInt bitwise_or(BigInt other);
     BigInt bitwise_and(BigInt other);
+    BigInt bitwise_xor(BigInt other);
     void clean_leading_zeros();
 public:
     // constructors
@@ -52,6 +53,7 @@ public:
     BigInt operator>>(int64_t num);
     BigInt operator|(BigInt other);
     BigInt operator&(BigInt other);
+    BigInt operator^(BigInt other);
     BigInt* operator+=(BigInt other);
     BigInt* operator-=(BigInt other);
     BigInt* operator*=(BigInt other);
@@ -61,6 +63,7 @@ public:
     BigInt* operator>>=(int64_t num);
     BigInt* operator|=(BigInt other);
     BigInt* operator&=(BigInt other);
+    BigInt* operator^=(BigInt other);
     BigInt* operator++(int i);
     BigInt* operator--(int i);
     friend std::ostream& operator<<(std::ostream& out, BigInt& bi);

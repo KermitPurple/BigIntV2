@@ -6,7 +6,7 @@ int main(){
     std::cout << a << std::endl;
     a *= 44444444444444444;
     std::cout << a << std::endl;
-    a = BigInt(3) & 2;
+    a = BigInt(0b01) ^ (0b11);
     std::cout << a << std::endl;
     return 0;
 }

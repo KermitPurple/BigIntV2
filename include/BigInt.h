@@ -22,6 +22,7 @@ private:
     BigInt left_shift_small(int64_t num, std::vector<unsigned> val);
     BigInt right_shift_small(int64_t num, std::vector<unsigned> val);
     BigInt bitwise_or(BigInt other);
+    BigInt bitwise_and(BigInt other);
     void clean_leading_zeros();
 public:
     // constructors

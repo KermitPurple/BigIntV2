@@ -116,6 +116,17 @@ BigInt BigInt::bitwise_or(BigInt other){
     return BigInt(result);
 }
 
+BigInt BigInt::bitwise_and(BigInt other){
+    uint64_t sz = size();
+    uint64_t zeros = sz - other.size();
+    std::vector<unsigned> result;
+    std::vector<unsigned> aligned = other.align(zeros);
+    for(int i = 0; i < sz; i++){
+        result.push_back(value[i] & aligned[i]);
+    }
+    return BigInt(result);
+}
+
 void BigInt::clean_leading_zeros(){
     for(uint64_t i = size() - 1; i >= 1; i--){
         if(value[i] == 0)
@@ -316,14 +327,11 @@ BigInt BigInt::operator|(BigInt other){
 }
 
 BigInt BigInt::operator&(BigInt other){
-    uint64_t sz = size();
-    uint64_t zeros = sz - other.size();
-    std::vector<unsigned> result;
-    std::vector<unsigned> aligned = other.align(zeros);
-    for(int i = 0; i < sz; i++){
-        result.push_back(value[i] & aligned[i]);
+    if(size() > other.size()){
+        return bitwise_and(other);
+    }else{
+        return other.bitwise_and(*this);
     }
-    return result;
 }
 
 BigInt* BigInt::operator+=(BigInt other){

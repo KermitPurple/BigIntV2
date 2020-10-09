@@ -161,6 +161,7 @@ BigInt::BigInt(std::vector<unsigned> vec):BigInt(vec, true){
 }
 
 BigInt::BigInt(std::vector<unsigned> vec, bool pos){
+    if(vec.empty()) vec.push_back(0);
     value = vec;
     positive = pos;
     clean_leading_zeros();
